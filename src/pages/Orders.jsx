@@ -1,5 +1,9 @@
 function Orders() {
-  return <div>orders</div>;
+  return (
+    <div className="min-h-screen grid place-content-center text-center">
+      orders
+    </div>
+  );
 }
 
 export default Orders;

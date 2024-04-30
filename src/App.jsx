@@ -1,9 +1,68 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  About,
+  Cart,
+  Checkout,
+  HomeLayout,
+  Landing,
+  Login,
+  Orders,
+  Products,
+  Register,
+  SingleProduct,
+  Error,
+} from "./pages";
+
 function App() {
-  return (
-    <>
-      <h1 className="text-3xl font-bold underline btn">Hello world!</h1>
-    </>
-  );
+  const routes = createBrowserRouter([
+    {
+      path: "/",
+      element: <HomeLayout />,
+      errorElement: <Error />,
+      children: [
+        {
+          index: true,
+          element: <Landing />,
+        },
+        {
+          path: "/products",
+          element: <Products />,
+        },
+        {
+          path: "/product/:id",
+          element: <SingleProduct />,
+        },
+        {
+          path: "/cart",
+          element: <Cart />,
+        },
+        {
+          path: "/checkout",
+          element: <Checkout />,
+        },
+        {
+          path: "/orders",
+          element: <Orders />,
+        },
+        {
+          path: "/about",
+          element: <About />,
+        },
+      ],
+    },
+    {
+      path: "/login",
+      element: <Login />,
+      errorElement: <Error />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
+      errorElement: <Error />,
+    },
+  ]);
+
+  return <RouterProvider router={routes} />;
 }
 
 export default App;
